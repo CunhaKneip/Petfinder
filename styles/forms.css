@@ -244,6 +244,7 @@
 
 
     .criar-conta__secao{
+        background-image: url("../assets/background_desktop.svg");
         border-radius: 1.75rem;
 
     }
