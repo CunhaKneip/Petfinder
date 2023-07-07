@@ -15,6 +15,7 @@
 .criar-conta__secao{
     background-color: var(--cor-formulario);
     background-image: url("../assets/background.svg");
+    background-size: cover;
     filter: blur();
     padding: 2.125rem 1rem;
     border-radius: 0 0 1.75rem 1.75rem;
