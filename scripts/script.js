@@ -47,57 +47,46 @@ function TestaCPF(strCPF) {
 
 
 //os event listeners abaixo iram impedir o usuario de inserir valores incorretos nos campos
-nome.addEventListener("keypress", (e) => {
-    const key = e.key
+nome.addEventListener("input", (e) => {
+    const value = e.target.value;
   
-
-    if (!(/[a-zA-Z\s]/.test(key))) {
-      e.preventDefault();
-      return;
+    if (!/^[a-zA-Z\s]*$/.test(value)) {
+      e.target.value = value.replace(/[^a-zA-Z\s]/g, '');
     }
   });
-
-  sobrenome.addEventListener("keypress", (e) => {
-    const key = e.key
   
-
-    if (!/[a-zA-Z\s]/.test(key)) {
-      e.preventDefault();
-      return;
+  sobrenome.addEventListener("input", (e) => {
+    const value = e.target.value;
+  
+    if (!/^[a-zA-Z\s]*$/.test(value)) {
+      e.target.value = value.replace(/[^a-zA-Z\s]/g, '');
     }
   });
-
- cpf.addEventListener("keypress", (e) => {
-    const key = e.key
   
-
-    if (!/\d/.test(key)) {
-      e.preventDefault();
-      return;
+  cpf.addEventListener("input", (e) => {
+    const value = e.target.value;
+  
+    if (!/^\d*$/.test(value)) {
+      e.target.value = value.replace(/\D/g, '');
     }
   });
-
-  cep.addEventListener("keypress", (e) => {
-    const key = e.key
   
-
-    if (!/\d/.test(key)) {
-      e.preventDefault();
-      return;
+  cep.addEventListener("input", (e) => {
+    const value = e.target.value;
+  
+    if (!/^\d*$/.test(value)) {
+      e.target.value = value.replace(/\D/g, '');
     }
   });
-
-
-cidade.addEventListener("keypress", (e) => {
-    const key = e.key
   
-
-    if (!/[a-zA-Z]/.test(key)) {
-      e.preventDefault();
-      return;
+  cidade.addEventListener("input", (e) => {
+    const value = e.target.value;
+  
+    if (!/^[a-zA-Z]*$/.test(value)) {
+      e.target.value = value.replace(/[^a-zA-Z]/g, '');
     }
   });
-
+  
 
 
 
