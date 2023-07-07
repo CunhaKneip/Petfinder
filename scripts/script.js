@@ -51,7 +51,7 @@ nome.addEventListener("keypress", (e) => {
     const key = e.key
   
 
-    if (!/[a-zA-Z]/.test(key)) {
+    if (!(/[a-zA-Z\s]/.test(key))) {
       e.preventDefault();
       return;
     }
@@ -61,7 +61,7 @@ nome.addEventListener("keypress", (e) => {
     const key = e.key
   
 
-    if (!/[a-zA-Z]/.test(key)) {
+    if (!/[a-zA-Z\s]/.test(key)) {
       e.preventDefault();
       return;
     }
