@@ -16,6 +16,7 @@
     background-color: var(--cor-formulario);
     background-image: url("../assets/background.svg");
     background-size: cover;
+    background-size: 100% auto;
     background-repeat: no-repeat;
     filter: blur();
     padding: 2.125rem 1rem;
