@@ -38,11 +38,7 @@
 
 @media screen and (min-width: 1720px) {   
     .rodape{
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        
+               
         padding:0 0 0 312px;
         align-items: center;
         justify-content: space-between;
