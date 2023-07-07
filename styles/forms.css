@@ -15,6 +15,7 @@
 .criar-conta__secao{
     background-color: var(--cor-formulario);
     background-image: url("../assets/background.svg");
+    background-size: cover;
     background-size: 100% auto;
     background-repeat: no-repeat;
     filter: blur();
@@ -236,7 +237,7 @@
     }
 
     .genero{
-       
+        margin-right: 260px;
         align-items: self-start;
     }
 
@@ -244,9 +245,9 @@
 
 
     .criar-conta__secao{
-        background-image: url("../assets/background_desktop.svg");
-        border-radius: 1.75rem;
+        background-image: url("/assets/background_desktop.svg");
 
+        border-radius: 1.75rem;
     }
     
     .criar-conta__div
