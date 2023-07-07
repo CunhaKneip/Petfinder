@@ -8,6 +8,8 @@ const email = document.getElementById('email')
 const confirmacao_email = document.getElementById('confirmacao_email')
 const cidade = document.getElementById('cidade')
 const cpf= document.getElementById('CPF')
+const cep = document.getElementById('CEP')
+const estado = document.getElementById('estado')
 
 
 //constante que armazena o id do forms
@@ -44,6 +46,110 @@ function TestaCPF(strCPF) {
 
 
 
+//os event listeners abaixo iram impedir o usuario de inserir valores incorretos nos campos
+nome.addEventListener("keypress", (e) => {
+    const key = e.key
+  
+
+    if (!/[a-zA-Z]/.test(key)) {
+      e.preventDefault();
+      return;
+    }
+  });
+
+  sobrenome.addEventListener("keypress", (e) => {
+    const key = e.key
+  
+
+    if (!/[a-zA-Z]/.test(key)) {
+      e.preventDefault();
+      return;
+    }
+  });
+
+ cpf.addEventListener("keypress", (e) => {
+    const key = e.key
+  
+
+    if (!/\d/.test(key)) {
+      e.preventDefault();
+      return;
+    }
+  });
+
+  cep.addEventListener("keypress", (e) => {
+    const key = e.key
+  
+
+    if (!/\d/.test(key)) {
+      e.preventDefault();
+      return;
+    }
+  });
+
+
+cidade.addEventListener("keypress", (e) => {
+    const key = e.key
+  
+
+    if (!/[a-zA-Z]/.test(key)) {
+      e.preventDefault();
+      return;
+    }
+  });
+
+
+
+
+//Abaixo se encontra o código para preencher automaticamente os campos de estados e cidade quando o CEP for preenchido
+
+//primeiramente, iremos verificar se o CEP inteiro foi inserido
+cep.addEventListener("keyup", (e) => {
+    const valorCep = e.target.value;
+  
+    if (valorCep.length === 8) {
+      getAddress(valorCep);
+    }
+  });
+
+// Função getAddress  para pegar os valores da API,precisa ser assincrona pois ela espera por uma resposta e pode travar todo o programa se for sincrona
+const getAddress = async (cep) => {
+    // toggleLoader();
+  
+    // cep.blur();
+  
+    //coloca a URL da API em uma constante
+    const apiUrl = `https://viacep.com.br/ws/${cep}/json/`;
+  
+    //o codigo espera(await) pela resposta da API e coloca a resposta em uma constante
+    const response = await fetch(apiUrl);
+  
+    //coloca o valor de response como um JSON na variavel "data"
+    const data = await response.json();
+  
+    // console.log(data);
+    // console.log(formInputs);
+    // console.log(data.erro);
+
+
+    cidade.value = data.localidade;
+    estado.value = data.uf;
+}
+  
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
 //event listener que irá ser acionado quando o formulário foi enviado (por isso o parametro 'submit') e guarda esse evento no parametro "e" (sera utilizado para cancelar o envio caso hajam erros)
 form.addEventListener('submit', (e) => {
 
@@ -51,28 +157,29 @@ form.addEventListener('submit', (e) => {
 
 
     //abaixo estão os ifs reponsáveis pela validação, cada um deles salva uma msg de erro na array erros caso detecte uma invalidade
-    if (/\d/.test(nome.value) || /[!@#$%^&*]/.test(nome.value)) {
-        erros.push('*nome inválido')
-    }
+    
+    // if (/\d/.test(nome.value) || /[!@#$%^&*]/.test(nome.value)) {
+    //     erros.push('*nome inválido')
+    // }
 
-    if (/\d/.test(sobrenome.value) || /[!@#$%^&*]/.test(sobrenome.value)) {
-        erros.push('*sobrenome inválido')
-    }
+    // if (/\d/.test(sobrenome.value) || /[!@#$%^&*]/.test(sobrenome.value)) {
+    //     erros.push('*sobrenome inválido')
+    // }
 
     if(!TestaCPF(cpf.value)){
         erros.push('*CPF inválido')
     }
 
-    if (/\d/.test(cidade.value) || /[!@#$%^&*]/.test(cidade.value)) {
-        erros.push('*cidade inválida')
-    }
+    // if (/\d/.test(cidade.value) || /[!@#$%^&*]/.test(cidade.value)) {
+    //     erros.push('*cidade inválida')
+    // }
     
 
     if(email.value != confirmacao_email.value){
         erros.push('*o email deve ser o mesmo para os dois campos')
     }
 
-    if(!(/\d/.test(senha.value) && /[A-Z]/.test(senha.value) && /[A-Z]/.test(senha.value) && /[!@#$%^&*]/.test(senha.value)) || (senha.value.length < 8)) {
+    if(!(/\d/.test(senha.value) && /[A-Z]/.test(senha.value) && /[a-z]/.test(senha.value) && /[!@#$%^&*]/.test(senha.value)) || (senha.value.length < 8)) {
         erros.push('*senha inválida')
     }
 
