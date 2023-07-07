@@ -1,0 +1,276 @@
+.principal{
+    margin: 0.75rem;
+}
+
+
+.criar-conta__div{
+    background-color:var(--cor-principal);
+    color: white;
+    font-size: 1.25rem;
+    padding: 12px 0 12px 21px;
+    border-radius: 1.75rem 1.75rem 0 0; 
+}
+
+
+.criar-conta__secao{
+    background-color: var(--cor-formulario);
+    background-image: url("../assets/background.svg");
+    filter: blur();
+    padding: 2.125rem 1rem;
+    border-radius: 0 0 1.75rem 1.75rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+}
+.criacao_de_conta_desktop{
+    display: none;
+}
+
+.formulario__questoes, .criar-conta__formulario{
+    display: flex; 
+    flex-direction: column; 
+    gap: 1rem; 
+}
+
+
+
+.genero{
+    display: flex;
+    text-align: center;
+}
+
+.genero__opcoes{
+    display: flex;
+}
+
+.genero__opcao{
+    font-weight: 300;
+    font-size: 0.875rem;
+    text-align: center;
+    display: flex;
+    align-items: baseline;
+
+    
+}
+
+.formulario__label{
+    font-weight: 700;
+}
+
+.formularios__barra{
+    border: 0;
+    width: 100%;
+}
+
+.formularios__barra:focus{
+    outline: none;
+}
+
+.senha__aviso{
+    font-weight: 300;
+    font-size: 0.75rem;
+}
+
+.formulario__botao__div{
+    margin-top: 3rem;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    gap:1rem;
+}
+
+#msg_erro{
+    color: red;
+    text-shadow: 0px 0px 0px;
+
+}
+
+
+.formulario__botao{
+    background-color: var(--cor-principal);
+    border: 0;
+    border-radius:1rem;
+    color: white;
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    font-size: 1.5rem;
+
+
+}
+
+#voltar{
+    color: var(--cor-principal);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.estado__cep{
+    display: flex;
+    align-items: center;
+    gap:20px;
+    
+}
+
+.data__barra{
+    width: fit-content;
+}
+
+
+@media screen and (min-width:1024px){
+
+    .principal{
+        margin: 58px 104px 119px 104px;
+    }
+
+
+    .criar-conta__formulario{
+        align-items: center;
+    }
+
+    .formulario__questoes{
+        display: flex; 
+        flex-direction: row; 
+        flex-wrap: wrap;
+        column-gap: 10rem;
+        row-gap: 1.7rem; ; 
+    }
+
+
+
+    .formulario__label,
+    .genero{
+        width:280px;
+    }
+
+
+
+    .formularios__barra{
+        margin-top: 2px; ;
+        height: 27px;
+    }
+
+    .cep{
+        width: 141px;
+    }
+
+    .estado__cep{
+        display: flex;
+        align-items: center;
+        gap:20px;
+        
+    }
+
+    .criar-conta__secao{
+        background-image: url("../assets/background_tablet.svg");
+        padding-left: 2.75rem;
+    }
+
+    .senha__aviso{
+        width:279px;
+        height:fit-content;
+    }
+
+    .formulario__botao__div{
+        justify-content: center;
+        width: fit-content;
+        height: fit-content;
+    }
+    .formulario__botao{
+        width: 293px;
+        padding: 6px 81px;
+    }
+
+    #voltar{
+        margin-top: 100px;
+        margin-left: 30%;
+    }
+
+
+
+
+}
+
+@media screen and (min-width:1720px){
+    .criacao_de_conta_desktop{
+        display: block;
+        background-color: var(--cor-principal);
+        padding: 1.25rem 4rem;
+        font-size: 2.5rem;
+        color: white;
+        border-radius: 28px;
+        margin-bottom: 4rem;
+    }
+    .formulario__questoes{
+        padding-left: 10%;
+        row-gap: 0.875rem;
+    }
+
+    .formulario__label{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 542px;
+        font-size: 1.5rem;
+    }
+    .formularios__barra{
+        width:300   px;
+        height: 27px;;
+    }
+   
+    .cep{
+        display: flex;
+        gap:1rem;
+        align-items: center;
+        width: fit-content;
+    }
+
+    .genero__opcoes{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        
+    }
+    .genero__opcao{
+        font-size: 1rem;
+    }
+
+    .genero{
+       
+        align-items: self-start;
+    }
+
+
+
+
+    .criar-conta__secao{
+        border-radius: 1.75rem;
+    }
+    
+    .criar-conta__div
+    {
+        display: none;
+    }
+    
+    .senha__aviso{
+        font-size: 1rem;
+        width: 22.8rem;
+    }
+
+
+
+    .formulario__botao__div{ 
+        width: fit-content;
+        margin-left: 75%;
+    }
+
+    .formulario__botao{
+        width: fit-content;
+        padding: 1.5rem 4rem;
+        font-size: 2.25rem ;
+
+    }
+
+    #voltar{
+        margin-left:94%;
+    }
+    
+}

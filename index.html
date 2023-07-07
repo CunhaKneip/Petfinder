@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/mainStyle.css">
+    <link rel="icon" type="image/ico" href="assets/favicon_io/favicon.ico">
+    <title>Criação de conta - Petfinder</title>
+</head>
+<body>
+    <header class="cabecalho">
+        <img class="imagem__cabecalho" src="assets/petfinderLogo.svg" alt="Logo do Petfinder">
+    </header>
+
+    <main class="principal">
+        <div class="criar-conta__div">
+            <p>Criação de conta:</p>
+        </div>
+
+        <section class="criar-conta__secao">
+            
+            <form id="form" class="criar-conta__formulario">
+
+                <div class="criacao_de_conta_desktop">
+                    <p>Criação de conta:</p>
+                </div>
+            <div class="formulario__questoes">
+                <div class="formulario__label">
+                    <label for="nome">Nome:</label><br>
+                    <input class="formularios__barra" type ="text" id="nome" name="nome" required>
+                </div>
+                <div class="formulario__label">
+                    <label for="sobrenome">Sobrenome:</label><br>
+                    <input class="formularios__barra" type ="text" id="sobrenome" name="sobrenome" required>
+                </div>
+                <div class="formulario__label">
+                    <label for="">Nome de usuário:</label><br>
+                    <input class="formularios__barra" type ="text" id="usuario" name="usuario" required>
+                </div>
+                
+
+                <div class="genero">
+                    <p class="formulario__label">Gênero:</p>
+                    <div class="genero__opcoes">       
+                                     
+                        <div class="genero__opcao">
+                            <input type ="radio" id="masculino" name="genero" value="M" required >
+                            <label for="masculino">Masculino</label>
+                        </div>
+
+                        <div class="genero__opcao">
+                            <input type ="radio" id="feminino" name="genero" value="F" required >
+                            <label for="feminino">Feminino</label>
+                        </div>
+
+                        <div class="genero__opcao">
+                            <input type ="radio" id="outro" name="genero" value="O" required >
+                            <label for="outro">Outro</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formulario__label">
+                    <label for="dataNascimento">Data de nascimento</label><br>
+                    <input class="formularios__barra data__barra" type ="date" id="dataNascimento" name="dataNascimento" placeholder="mm-dd-yyyy" min="1900-01-01" max="2030-12-31" required>
+                </div>
+
+                <div class="formulario__label">
+                    <label for="CPF">CPF:</label><br>
+                    <input class="formularios__barra" type ="text" id="CPF" name="CPF" minlength="11" maxlength="11" required>
+                </div>
+                <div class="formulario__label estado__cep">
+                    <div  class=" cep">
+                        <label for="CEP">CEP:</label><br>
+                        <input class="formularios__barra" type ="text" id="CEP" name="CEP" minlength="8" maxlength="8" required >
+                    </div>
+                    <div >
+                        <label for="CEP">Estado:</label>
+                        <select id="estado" name="estado">
+                            <option value="AC">AC</option>
+                            <option value="AL">AL</option>
+                            <option value="AP">AP</option>
+                            <option value="AM">AM</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="MA">MA</option>
+                            <option value="MT">MT</option>
+                            <option value="MS">MS</option>
+                            <option value="MG">MG</option>
+                            <option value="PA">PA</option>
+                            <option value="PB">PB</option>
+                            <option value="PR">PR</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="RJ">RJ</option>
+                            <option value="RN">RN</option>
+                            <option value="RS">RS</option>
+                            <option value="RO">RO</option>
+                            <option value="RR">RR</option>
+                            <option value="SC">SC</option>
+                            <option value="SP">SP</option>
+                            <option value="SE">SE</option>
+                            <option value="TO">TO</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="formulario__label">
+                    <label for="cidade">Cidade:</label><br>
+                    <input class="formularios__barra" type ="text" id="cidade" name="cidade" required>
+                </div>
+
+                <div class="formulario__label">
+                    <label for="endereco">Endereço:</label><br>
+                    <input class="formularios__barra" type ="text" id="endereco" name="endereco" required>
+                </div>
+
+                <div class="formulario__label">
+                    <label for="complemento">Complemento:</label><br>
+                    <input class="formularios__barra" type ="text" id="complemento" name="complemento">
+                </div>
+
+                <div class="formulario__label">
+                    <label for="email">Email:</label><br>
+                    <input class="formularios__barra" type ="email" id="email" name="email" required>
+                </div>
+
+                <div class="formulario__label">
+                    <label for="confirmacao_email">Confirme seu email:</label><br>
+                    <input class="formularios__barra" type ="email" id="confirmacao_email" name="confirmacao_email" required>
+                </div>
+
+                <div class="formulario__label">
+                    <label for="senha">Senha*:</label><br>
+                    <input class="formularios__barra" type ="password" id="senha" name="senha" required>
+                </div>
+                
+                <div class="formulario__label">
+                    <label for="confirmacao_senha">Confirme sua senha*:</label><br>
+                    <input class="formularios__barra" type ="password" id="confirmacao_senha" name="confirmacao_senha" required>
+                </div>
+                <div class="senha__aviso">
+                    <p>*A senha deve conter no minímo 8 caracteres, números, letras maiúscula, minúsculas e pelo menos 1 caractere especial (!,@,#,%,...).</p>
+                </div>
+
+                </div>
+
+                <div class="formulario__botao__div">
+                    <p id="msg_erro"></p>
+                    <input class="formulario__botao" type="submit" value="Criar conta">
+                </div>
+                
+                
+            </form>
+
+            
+        </section>
+        <a id="voltar" href="#"> &#x3C-Voltar </a>
+    </main>
+
+    <footer class="rodape">
+        <img class="imagem__rodape" src="assets/petfinderLogoRodape.jpg" alt ="Logo Petfinder">
+        <a class="rodape__link" href="#">Ajuda</a>
+        <a class="rodape__link" href="#">Sobre</a>
+        <a class="rodape__link aparece__1024" href="#">Apoiadores</a>
+        <p class="rodape__link aparece__1024" > Desenvolvido por Gustavo Cunha </p>
+    </footer>
+
+    <script src="/scripts/script.js"></script>
+    
+</body>
+</html>
