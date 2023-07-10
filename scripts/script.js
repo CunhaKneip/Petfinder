@@ -40,13 +40,13 @@ function TestaCPF(strCPF) {
     if ((Resto == 10) || (Resto == 11))  Resto = 0;
     if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
 
-    //caso os dois dígitos verificadores forem corretos, a função retorna true
+    //caso os dois digitos verificadores forem corretos, a função retorna true
     return true;
 }
 
 
 
-//os event listeners abaixo iram impedir o usuario de inserir valores incorretos nos campos
+//os event listeners abaixo irão impedir o usuario de inserir valores incorretos nos campos
 nome.addEventListener("input", (e) => {
     const value = e.target.value;
   
@@ -104,10 +104,8 @@ cep.addEventListener("keyup", (e) => {
 // Função getAddress  para pegar os valores da API,precisa ser assincrona pois ela espera por uma resposta e pode travar todo o programa se for sincrona
 const getAddress = async (cep) => {
     // toggleLoader();
-  
-    // cep.blur();
-  
-    //coloca a URL da API em uma constante
+    
+    //coloca a URL da API em uma constante, essa URL recebe o valor do CEP para o seu caminho, e assim pega dos dados no arquivo json que se encontra nesse caminho
     const apiUrl = `https://viacep.com.br/ws/${cep}/json/`;
   
     //o codigo espera(await) pela resposta da API e coloca a resposta em uma constante
@@ -116,11 +114,7 @@ const getAddress = async (cep) => {
     //coloca o valor de response como um JSON na variavel "data"
     const data = await response.json();
   
-    // console.log(data);
-    // console.log(formInputs);
-    // console.log(data.erro);
-
-
+  
     cidade.value = data.localidade;
     estado.value = data.uf;
 }
