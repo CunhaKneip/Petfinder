@@ -103,7 +103,6 @@ cep.addEventListener("keyup", (e) => {
 
 // Função getAddress  para pegar os valores da API,precisa ser assincrona pois ela espera por uma resposta e pode travar todo o programa se for sincrona
 const getAddress = async (cep) => {
-<<<<<<< HEAD
   toggleLoader();     
 
  //coloca a URL da API em uma constante
@@ -135,23 +134,6 @@ const getAddress = async (cep) => {
    cidade.value = data.localidade;
    estado.value = data.uf;
    toggleLoader();
-
-=======
-    // toggleLoader();
-    
-    //coloca a URL da API em uma constante, essa URL recebe o valor do CEP para o seu caminho, e assim pega dos dados no arquivo json que se encontra nesse caminho
-    const apiUrl = `https://viacep.com.br/ws/${cep}/json/`;
-  
-    //o codigo espera(await) pela resposta da API e coloca a resposta em uma constante
-    const response = await fetch(apiUrl);
-  
-    //coloca o valor de response como um JSON na variavel "data"
-    const data = await response.json();
-  
-  
-    cidade.value = data.localidade;
-    estado.value = data.uf;
->>>>>>> 7fb0b7a72cd724a4056db88d4af898321f12d76f
 }
 
   
