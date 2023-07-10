@@ -20,28 +20,70 @@ const erro_ = document.getElementById('msg_erro')
 
 
 //função para testar a validade do CPF, retirada do site da receita federal
+
+//função para testar a validade do CPF, retirada do site da receita federal
 function TestaCPF(strCPF) {
-    var Soma; //Variavel responsável por somar os dígitos do CPF
-    var Resto; // Variavel responsável por guardar o valor do resta das divisões
-    Soma = 0; // inicialização da variavel soma 
-  if (strCPF == "00000000000") return false; // retorna falsoautomaticamente caso o CPF seja tudo 0
+  var Soma; //Variavel responsável por somar os dígitos do CPF
+  var Resto; // Variavel responsável por guardar o valor do resta das divisões
+    
+  Soma = 0; // inicialização da variavel soma 
+  if (strCPF == "00000000000" 
+  ||strCPF == "11111111111" 
+  ||strCPF == "22222222222"
+  ||strCPF == "33333333333"
+  ||strCPF == "44444444444"
+  ||strCPF == "55555555555"
+  ||strCPF == "66666666666"
+  ||strCPF == "77777777777"
+  ||strCPF == "88888888888"
+  ||strCPF == "99999999999") return false; // retorna falsoautomaticamente caso o CPF seja tudo 0
 
-  for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i); // Soma o resultado da multiplicação de cada digito do CPF com o valor 11(esse valor decai 1 a cada multiplicação,seu mínimo sendo 2)
-  Resto = (Soma * 10) % 11; //faz o resto da soma acima
+  for (i=0; i<9; i++) {
+     
+    Soma = Soma + parseInt(strCPF.charAt(i)) * (10 - i); // Soma o resultado da multiplicação de cada digito do CPF com o valor 11(esse valor decai 1 a cada multiplicação,seu mínimo sendo 2)
+    console.log(strCPF.charAt(i),"*", (10 - i), "=", Soma);
+  }
 
-    if ((Resto == 10) || (Resto == 11))  Resto = 0; // Caso o resultado for maior que 9 (pois oprimeiro digito verificador deve ser de 0 à 9) é atribuido o valor 0 para a variavel resto
-    if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;// compara o resto com o 9 dígito do CPF, caso eles sejam diferentes,a função retorna false,caso contrário, o codigo continua( a função substring precisa de dois parametros, um define onde começara a substring e outro onde acabará,.Neste exemplo,a asubstring pegara o somente o 9)
+  Resto = 11-(Soma % 11); //faz o resto da soma acima
+  console.log("resto1", Resto);
+  console.log("devia ser:", parseInt(strCPF.charAt(9)));
 
-    //repete a msm coisa para o segundo dígito verificador do CPF
+  if ((Resto === 10) || (Resto === 11)) {
+    Resto = 0; // Caso o resultado for maior que 9 (pois oprimeiro digito verificador deve ser de 0 à 9) é atribuido o valor 0 para a variavel resto
+  }
+
+  if (Resto !== parseInt(strCPF.charAt(9)) ){
+    console.log("cpf falso, primeiro digito");
+    return false;// compara o resto com o 9 dígito do CPF, caso eles sejam diferentes,a função retorna false,caso contrário, o codigo continua( a função substring precisa de dois parametros, um define onde começara a substring e outro onde acabará,.Neste exemplo,a asubstring pegara o somente o 9)
+  }
+
+  //repete a msm coisa para o segundo dígito verificador do CPF
   Soma = 0;
-    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
-    Resto = (Soma * 10) % 11;
 
-    if ((Resto == 10) || (Resto == 11))  Resto = 0;
-    if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
+  for (i = 1; i < 10; i++) { 
+    Soma = Soma + parseInt(strCPF.charAt(i)) * (11 - i);
+    console.log(Soma)
+  }
 
-    //caso os dois digitos verificadores forem corretos, a função retorna true
-    return true;
+  Resto= 11-(Soma % 11);
+  console.log("resto2", Resto);
+  console.log("devia ser:", parseInt(strCPF.charAt(10)));
+
+
+  
+
+  if ((Resto === 10) || (Resto === 11)){
+    Resto = 0;
+  }
+  console.log(Resto);
+  
+  if (Resto !== parseInt(strCPF.charAt(10)) ){
+    console.log("cpf falso, secundo digito");
+    return false;
+  }
+
+  //caso os dois dígitos verificadores forem corretos, a função retorna true
+  return true;
 }
 
 
