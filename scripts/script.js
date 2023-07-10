@@ -16,7 +16,7 @@ const estado = document.getElementById('estado')
 const form = document.getElementById('form')
 
 //constante que armazena o id do elemento msg_erro do forms, ele irá mudar conforme o javascript detecta erro nas respostas do forms
-const erro = document.getElementById('msg_erro')
+const erro_ = document.getElementById('msg_erro')
 
 
 //função para testar a validade do CPF, retirada do site da receita federal
@@ -103,6 +103,40 @@ cep.addEventListener("keyup", (e) => {
 
 // Função getAddress  para pegar os valores da API,precisa ser assincrona pois ela espera por uma resposta e pode travar todo o programa se for sincrona
 const getAddress = async (cep) => {
+<<<<<<< HEAD
+  toggleLoader();     
+
+ //coloca a URL da API em uma constante
+ const apiUrl = `https://viacep.com.br/ws/${cep}/json/`;
+
+ //o codigo espera(await) pela resposta da API e coloca a resposta em uma constante
+ const response = await fetch(apiUrl);
+
+ //coloca o valor de response como um JSON na variavel "data"
+ const data = await response.json();
+ 
+ //Caso o cep inserido for inválido, chamamos  a função da msg, dando o valor referente ao erro
+ if (data.erro == true) {
+   toggleLoader();
+   
+   erro_.innerText = "*CEP inválido";
+
+   cep.reset();
+   estado.reset();
+   cidade.reset();
+
+   return;
+ }
+ 
+ if(data.erro != true){
+   erro_.innerText = "";
+ }
+
+   cidade.value = data.localidade;
+   estado.value = data.uf;
+   toggleLoader();
+
+=======
     // toggleLoader();
     
     //coloca a URL da API em uma constante, essa URL recebe o valor do CEP para o seu caminho, e assim pega dos dados no arquivo json que se encontra nesse caminho
@@ -117,8 +151,21 @@ const getAddress = async (cep) => {
   
     cidade.value = data.localidade;
     estado.value = data.uf;
+>>>>>>> 7fb0b7a72cd724a4056db88d4af898321f12d76f
 }
+
   
+//Função do loader, ele irá aparecer quando o cep for digitado ou quando o forms for enviado
+//ele é ativado quando a função é chamada e desativado quando ela é chamada dnovo
+const toggleLoader = () => {
+  cep.blur();
+  const fadeElement = document.querySelector("#fade");
+  const loaderElement = document.querySelector("#loader_img");
+
+  fadeElement.classList.toggle("hide");
+  loaderElement.classList.toggle("hide");
+};
+
   
 
 
@@ -141,6 +188,12 @@ form.addEventListener('submit', (e) => {
 
     //abaixo estão os ifs reponsáveis pela validação, cada um deles salva uma msg de erro na array erros caso detecte uma invalidade
     
+    if(erro_.innerText.includes("*CEP inválido")){
+      erros.push("*CEP inválido");
+    
+    }
+
+
     // if (/\d/.test(nome.value) || /[!@#$%^&*]/.test(nome.value)) {
     //     erros.push('*nome inválido')
     // }
@@ -174,7 +227,7 @@ form.addEventListener('submit', (e) => {
     //caso a array "erros" tenho um tamanho maior que 0, significa que houve erros, logo as msgs de erro seram escritas na tag de id "erro" do HTML. Alem disso o envio do formulario sera cancelado (e.preventDefault).
     if (erros.length > 0){
     e.preventDefault()
-    erro.innerText = erros.join(', ')
+    erro_.innerText = erros.join(', ')
     }
 
 })
