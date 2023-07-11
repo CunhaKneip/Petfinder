@@ -10,6 +10,7 @@ const cidade = document.getElementById('cidade')
 const cpf= document.getElementById('CPF')
 const cep = document.getElementById('CEP')
 const estado = document.getElementById('estado')
+const botao = document.getElementById('close-message')
 
 
 //constante que armazena o id do forms
@@ -206,54 +207,70 @@ const toggleLoader = () => {
 
 //event listener que irá ser acionado quando o formulário foi enviado (por isso o parametro 'submit') e guarda esse evento no parametro "e" (sera utilizado para cancelar o envio caso hajam erros)
 form.addEventListener('submit', (e) => {
-
-    let erros = [] // cria una array chamada erros, ele guardará todas as msg de erros 
-
-
-    //abaixo estão os ifs reponsáveis pela validação, cada um deles salva uma msg de erro na array erros caso detecte uma invalidade
-    
-    if(erro_.innerText.includes("*CEP inválido")){
-      erros.push("*CEP inválido");
-    
-    }
+  toggleLoader();
 
 
-    // if (/\d/.test(nome.value) || /[!@#$%^&*]/.test(nome.value)) {
-    //     erros.push('*nome inválido')
-    // }
+  let erros = [] // cria una array chamada erros, ele guardará todas as msg de erros 
 
-    // if (/\d/.test(sobrenome.value) || /[!@#$%^&*]/.test(sobrenome.value)) {
-    //     erros.push('*sobrenome inválido')
-    // }
 
-    if(!TestaCPF(cpf.value)){
-        erros.push('*CPF inválido')
-    }
+  //abaixo estão os ifs reponsáveis pela validação, cada um deles salva uma msg de erro na array erros caso detecte uma invalidade
+  
+  if(erro_.innerText.includes("*CEP inválido")){
+    erros.push("*CEP inválido");
+  
+  }
 
-    // if (/\d/.test(cidade.value) || /[!@#$%^&*]/.test(cidade.value)) {
-    //     erros.push('*cidade inválida')
-    // }
-    
 
-    if(email.value != confirmacao_email.value){
-        erros.push('*o email deve ser o mesmo para os dois campos')
-    }
+  // if (/\d/.test(nome.value) || /[!@#$%^&*]/.test(nome.value)) {
+  //     erros.push('*nome inválido')
+  // }
 
-    if(!(/\d/.test(senha.value) && /[A-Z]/.test(senha.value) && /[a-z]/.test(senha.value) && /[!@#$%^&*]/.test(senha.value)) || (senha.value.length < 8)) {
-        erros.push('*senha inválida')
-    }
+  // if (/\d/.test(sobrenome.value) || /[!@#$%^&*]/.test(sobrenome.value)) {
+  //     erros.push('*sobrenome inválido')
+  // }
 
-    if(senha.value != confirmacao_senha.value){
-        erros.push('*a senha deve ser a mesma para os dois campos')
-    }
+  if(!TestaCPF(cpf.value)){
+      erros.push('*CPF inválido')
+  }
 
-    
-    //caso a array "erros" tenho um tamanho maior que 0, significa que houve erros, logo as msgs de erro seram escritas na tag de id "erro" do HTML. Alem disso o envio do formulario sera cancelado (e.preventDefault).
-    if (erros.length > 0){
-    e.preventDefault()
+  // if (/\d/.test(cidade.value) || /[!@#$%^&*]/.test(cidade.value)) {
+  //     erros.push('*cidade inválida')
+  // }
+  
+
+  if(email.value != confirmacao_email.value){
+      erros.push('*o email deve ser o mesmo para os dois campos')
+  }
+
+  if(!(/\d/.test(senha.value) && /[A-Z]/.test(senha.value) && /[a-z]/.test(senha.value) && /[!@#$%^&*]/.test(senha.value)) || (senha.value.length < 8)) {
+      erros.push('*senha inválida')
+  }
+
+  if(senha.value != confirmacao_senha.value){
+      erros.push('*a senha deve ser a mesma para os dois campos')
+  }
+
+  
+  //caso a array "erros" tenho um tamanho maior que 0, significa que houve erros, logo as msgs de erro seram escritas na tag de id "erro" do HTML. Alem disso o envio do formulario sera cancelado (e.preventDefault).
+  if (erros.length > 0){
+    e.preventDefault();
+    toggleLoader();
     erro_.innerText = erros.join(', ')
-    }
+  } else {
+    e.preventDefault();
+    toggleLoader();
+    toggleMessage();
+    
+  }
 
 })
+
+botao.addEventListener('click',function() {
+toggleMessage();
+form.submit();
+
+
+
+});
 
 
