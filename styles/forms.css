@@ -100,6 +100,10 @@
 
 }
 
+.formulario__botao:hover{
+    cursor: pointer;
+}
+
 #voltar{
     color: var(--cor-principal);
     font-size: 1rem;
